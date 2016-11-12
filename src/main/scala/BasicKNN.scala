@@ -11,17 +11,26 @@ object BasicKNN {
     val dataSet = result._1
     val labels = result._2
 
-    //Create dataset and label it as A or B
+    /*
+      * Create dataset with labels of A and B
+      * We represent A as Snow while B as Good Weather. 
+      * Each dataset (predefined) are classified with Humidity as column 1 and Temperature as column 2.
+      * Since the return matrix is a 2X2, it can be plotted in a graph, with X=Column1 and Y=Column2
+      */
     println("DataSet:")
     println(dataSet(--->))
     println("Label:" + labels.mkString(","))
     println("------Label Print Completed-----")
     println()
 
-    //Basic test to see 0,0 are categorized as A or B
-    val selector = Array(0.0,0.0).asNDArray(1,2)
-    val classifiedValue = creator.classify0(selector, dataSet, labels, 3)
-    println("Closest match for:" + selector + ": is :" + classifiedValue);
+    /*
+      * Introduce a new data (0,0) without label.
+      * Now we need the system to classify if (0,0) belongs to which category.
+      * Based on the dataSet the new data should be classify as B(Good Weather).
+    /*
+    val newData = Array(0.0,0.0).asNDArray(1,2)
+    val classifiedValue = creator.classify0(newData, dataSet, labels, 3)
+    println("Closest match for:" + newData + ": is :" + classifiedValue);
     println("------Classifier Print Completed-----")
     println()
   }

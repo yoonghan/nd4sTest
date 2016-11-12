@@ -1,6 +1,7 @@
 # ND4S and KNN Prototype
 A K-NN classification/classifier in scala re-written from python.
 A class to test if ND4S is included! 
+This project is examples and data are based on "Machine Language in Action" book.
 
 Pre Installation
 =======

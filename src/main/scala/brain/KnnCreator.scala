@@ -22,12 +22,12 @@ object KnnCreator {
   }
 
   /**
-    * Core program to do the classification using kNN algorithm
-    * @param inX
-    * @param dataSet
-    * @param labels
-    * @param k
-    * @return
+    * Core program to do the classification using kNN classification, based ib euclidean algorithm.
+    * @param inX A input as matrix without label that needs to be classified.
+    * @param dataSet The dataset of all statistic gathered
+    * @param labels The labels used to mapped to the dataset
+    * @param k No of closest match
+    * @return Identify the Label for inX
     */
   def classify0(inX:INDArray, dataSet:INDArray, labels:Array[String], k:Int): String = {
     val dataSetSize = dataSet.shape()(0) //retrieve no of rows
@@ -69,11 +69,6 @@ println(getClass.getResource(dataSourceFile))
       returnMatrix(index, ->) = matLine
       index += 1
       val result = listFromLine(3)
-//      match {
-//        case "largeDoses" => 1
-//        case "smallDoses" => 2
-//        case _ => 3
-//      }
       result
     })
     return (returnMatrix, classLabelVector)
@@ -81,8 +76,9 @@ println(getClass.getResource(dataSourceFile))
 
   /**
     * Normalize all the inputs in matrix to set the range only from 0 to 1
-    * @param dataSet
-    * @return all output must only contains range from 0 to 1
+    * Important to keep the values small, hence rather than realnumbers, it is best to kept below 1
+    * @param dataSet matrix to be normalized
+    * @return all output of the passed matrix will contains a range between 0 to 1
     */
   def autoNorm(dataSet:INDArray): (INDArray, INDArray, INDArray) = {
     val minVals = dataSet.min(0)

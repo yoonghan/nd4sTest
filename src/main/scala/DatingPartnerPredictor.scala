@@ -17,7 +17,7 @@ object DatingPartnerPredictor {
     //    println("minval:" + minVals)
     //    println("dataSet:" + normDataSetRange(--->))
     //
-    //Test and Traing dating from playing video game, freq flyer and ice cream eating
+    //Test and Traing dating with datas of col-1=playing video game, col-2=freq flyer and col-3=ice cream eating
     creator.datingClassTest
   }
 }
