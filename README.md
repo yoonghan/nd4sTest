@@ -12,10 +12,10 @@ Execution
 =======
 1. Open a command line/terminal and Change to the checkout main folder
 2. Execute
-```bash
-    sbt
-    run
-```
+	```bash
+ 	   sbt
+ 	   run
+	```
 3. Select the number and key in the test you'll want to perform
 
 Programs
