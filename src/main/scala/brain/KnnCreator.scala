@@ -104,12 +104,12 @@ println(getClass.getResource(dataSourceFile))
     var errorCount = 0.0
     for(i <- 0 until numTestVecs) {
       val classifierResult = classify0(normMat(i,->), normMat(numTestVecs -> m,->), datingLabels.slice(numTestVecs, m), 3)
-      println("the classifier came back with:" + classifierResult + ", the real answer is: " + datingLabels(i))
+      println(s"the classifier came back with: $classifierResult , the real answer is: ${datingLabels(i)}")
       if(classifierResult != datingLabels(i)) {
         errorCount += 1.0
       }
     }
-    println("the total error rate is: " + (errorCount / numTestVecs.toFloat))
+    println(s"the total error rate is: ${errorCount / numTestVecs.toFloat}")
   }
 
   /**
@@ -119,7 +119,8 @@ println(getClass.getResource(dataSourceFile))
     */
   def img2vector(fileName: String): INDArray = {
     val returnVect = Nd4j.zeros(1, 1024)
-    val fr = Source.fromInputStream(getClass.getResourceAsStream(numbersSourceFolder +fileName)).getLines().toArray
+    val file = getClass.getResourceAsStream(numbersSourceFolder +fileName)
+    val fr = Source.fromInputStream(file).getLines().toArray
     for(i <- 0 until 32) {
       val lineStr = fr(i)
       for(j <- 0 until 32) {
@@ -135,7 +136,14 @@ println(getClass.getResource(dataSourceFile))
     * @return
     */
   def listFilesInDir(folderName: String): Array[File] = {
-    new File(getClass.getResource(numbersSourceFolder + folderName).getFile).listFiles()
+    val file = getClass.getResource(numbersSourceFolder + folderName)
+    if(file == null) {
+      System.err.println("---------------------")
+      System.err.println(s"The image folders do not contain ${numbersSourceFolder + folderName} folder, please unzip the file.")
+      System.err.println("---------------------")
+      System.exit(1)
+    }
+    new File(file.getFile).listFiles()
   }
 
   /**
@@ -164,7 +172,7 @@ println(getClass.getResource(dataSourceFile))
       println("the classifier came back with:" + classifierResult + ", the real answer is: " + classNumStr)
       if(classifierResult != classNumStr) errorCount += 1
     }
-    println("the total number of errors is:" + errorCount)
-    println("the total error rate is:" + (errorCount/mTest.toFloat))
+    println(s"the total number of errors is: $errorCount")
+    println(s"the total error rate is: ${errorCount/mTest.toFloat}")
   }
 }
