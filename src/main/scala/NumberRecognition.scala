@@ -1,6 +1,6 @@
 import org.nd4s.Implicits._
   /**
-   * Look into resources/number_image folders, you'll see numbers built from 32 X 32 0's and 1.
+   * Look into resources/number_image folders, you'll see numbers built from 32 X 32 0's and 1...
    * Each file are named as (the label) _ (the sequence). Sequence just meant it's different way of writing the same label.
   **/
 object NumberRecognition {
