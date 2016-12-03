@@ -22,7 +22,7 @@ object KnnCreator {
   }
 
   /**
-    * Core program to do the classification using kNN classification, based ib euclidean algorithm.
+    * Core program to do the classification using kNN classification, based on euclidean algorithm.
     * @param inX A input as matrix without label that needs to be classified.
     * @param dataSet The dataset of all statistic gathered
     * @param labels The labels used to mapped to the dataset
